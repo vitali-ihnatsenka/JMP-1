@@ -14,6 +14,7 @@ public class Plateau {
     public Plateau() {
         maxPoint = new Coordinate(DEFAULT_MAX_X, DEFAULT_MAX_Y);
         scrap = CoordinateUtil.getRandomPoint(DEFAULT_MAX_X, DEFAULT_MAX_Y);
+       // scrap = new Coordinate(4, 1);  //for testing purposes
     }
 
     public Plateau(Coordinate scrap, Coordinate maxPoint) {

@@ -52,11 +52,11 @@ public class ExploringServiceImpl implements ExploringService {
         rover.setDestination(goTo);
         do{
             steps.add(rover.step());
-        }while(rover.getState() == Rover.State.WAITING);
+        }while(rover.getState() != Rover.State.WAITING);
         if(rover.getPosition().equals(plateau.getScrap())){
             success = true;
         }
-        return new ExploreResponse(steps, success, String.format("Rover arrived to point %d %d", goTo.getX(), goTo.getX()));
+        return new ExploreResponse(steps, success, String.format("Rover arrived to point %d %d", goTo.getX(), goTo.getY()));
     }
 
     private ExploreResponse getEmptyResponse(String message){

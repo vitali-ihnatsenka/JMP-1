@@ -35,29 +35,34 @@ public class Rover {
     }
 
     public Coordinate step(){
-        if(destination.equals(position)){
-            state = State.WAITING;
-            return destination;
-        }
-        Coordinate nextPosition = new Coordinate(position.getX(), position.getY());
+        int nextX = destination.getX();
+        int nextY = destination.getY();
         if(destination.getX() > position.getX()){
-            nextPosition.setX(position.getX() + 1);
+            nextX = position.getX() + 1;
         }else if(destination.getX() < position.getX()){
-            nextPosition.setX(position.getX() - 1);
+            nextX = position.getX() - 1;
         }
         if(destination.getY() > position.getY()){
-            nextPosition.setY(position.getY() + 1);
+            nextY = position.getY() + 1;
         }else if(destination.getY() < position.getY()){
-            nextPosition.setX(position.getY() - 1);
+            nextY = position.getY() - 1;
         }
+        Coordinate nextPosition = new Coordinate(nextX, nextY);
         if(nextPosition.equals(destination)){
             state = State.WAITING;
         }
-        position = nextPosition;
+        position = new Coordinate(nextX, nextY);
         return nextPosition;
     }
 
-    private void updateState(){}
+    @Override
+    public String toString() {
+        return "Rover{" +
+                "position=" + position +
+                ", destination=" + destination +
+                ", state=" + state +
+                '}';
+    }
 
     public static enum State{
         WAITING, GOING
